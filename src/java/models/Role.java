@@ -2,6 +2,8 @@ package models;
 
 import java.io.Serializable;
 
+//Role object based on db 
+
 public class Role implements Serializable{
     
     private int rID;

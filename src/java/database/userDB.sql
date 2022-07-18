@@ -1,3 +1,6 @@
+-- -----------------------------------------------------
+-- DB for project to be based upon
+-- -----------------------------------------------------
 DROP SCHEMA IF EXISTS `userdb`;
 CREATE SCHEMA IF NOT EXISTS `userdb` DEFAULT CHARACTER SET latin1;
 USE `userdb`;
