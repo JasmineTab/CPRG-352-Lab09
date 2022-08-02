@@ -63,19 +63,21 @@
             <div class="addSect addAndEdit">
                 <h2>Add User</h2>
                 <form action="" method="post">
-                    <input type="hidden" name="action" value="add">
-                    <input type="email" name="emailAdd" placeholder="Email" value="" required>
-                    <input type="checkbox" name="activeAdd"> Active 
-                    <br><br>
-                    <input type="text" name="fNameAdd" placeholder="First Name" value="" required>
-                    <input type="text" name="lNameAdd" placeholder="Last Name" value="" required>
-                    <br><br>
-                    <input type="password" name="passAdd" placeholder="Password" value="" required="">
-                    <select name="roleAdd">
-                        <c:forEach var="role" items="${roles}">
-                            <option value="${role.rID}">${role.rName}</option>
-                        </c:forEach>
-                    </select>
+                    <div class="information">
+                        <input type="hidden" name="action" value="add">
+                        <input type="email" name="emailAdd" placeholder="Email" value="" required>
+                        <input type="checkbox" name="activeAdd"> Active 
+                        <br><br>
+                        <input type="text" name="fNameAdd" placeholder="First Name" value="" required>
+                        <input type="text" name="lNameAdd" placeholder="Last Name" value="" required>
+                        <br><br>
+                        <input type="password" name="passAdd" placeholder="Password" value="" required="">
+                        <select name="roleAdd">
+                            <c:forEach var="role" items="${roles}">
+                                <option value="${role.rID}">${role.rName}</option>
+                            </c:forEach>
+                        </select>
+                    </div>
                     <br><br>
                     <input type="submit" value="Add User" class="addButt">
                 </form>
@@ -87,33 +89,35 @@
             <div class="editSect addAndEdit">
                 <h2>Edit User</h2>
                 <form action="" method="post">
-                    <input type="email" name="emailEdit" placeholder="Email" value="${user.email}" disabled required>
-                    <label for="activeEdit">Active</label>
-                    <c:choose>
-                        <c:when test="${user.active == true}">
-                            <input id="activeEdit" type="checkbox" name="activeEdit" checked="checked"/>
-                        </c:when>
-                        <c:otherwise>
-                            <input id="activeEdit" type="checkbox" name="activeEdit"/>
-                        </c:otherwise>
-                    </c:choose>
-                    <br><br>
-                    <input type="text" name="fNameEdit" placeholder="First Name" value="${user.fName}" required>
-                    <input type="text" name="lNameEdit" placeholder="Last Name" value="${user.lName}" required>
-                    <br><br>
-                    <input type="password" name="passEdit" placeholder="Password" value="${user.password}" required="">
-                    <select name="roleEdit">
-                        <c:forEach var="role" items="${roles}">
-                            <c:choose>
-                                <c:when test="${role.rID == user.role.rID}">
-                                    <option value="${role.rID}" selected>${role.rName}</option>
-                                </c:when>
-                                <c:otherwise>
-                                    <option value="${role.rID}">${role.rName}</option>
-                                </c:otherwise>
-                            </c:choose>
-                        </c:forEach>
-                    </select>
+                    <div class="information">
+                        <input type="email" name="emailEdit" placeholder="Email" value="${user.email}" disabled required>
+                        <label for="activeEdit">Active</label>
+                        <c:choose>
+                            <c:when test="${user.active == true}">
+                                <input id="activeEdit" type="checkbox" name="activeEdit" checked="checked"/>
+                            </c:when>
+                            <c:otherwise>
+                                <input id="activeEdit" type="checkbox" name="activeEdit"/>
+                            </c:otherwise>
+                        </c:choose>
+                        <br><br>
+                        <input type="text" name="fNameEdit" placeholder="First Name" value="${user.fName}" required>
+                        <input type="text" name="lNameEdit" placeholder="Last Name" value="${user.lName}" required>
+                        <br><br>
+                        <input type="password" name="passEdit" placeholder="Password" value="${user.password}" required="">
+                        <select name="roleEdit">
+                            <c:forEach var="role" items="${roles}">
+                                <c:choose>
+                                    <c:when test="${role.rID == user.role.rID}">
+                                        <option value="${role.rID}" selected>${role.rName}</option>
+                                    </c:when>
+                                    <c:otherwise>
+                                        <option value="${role.rID}">${role.rName}</option>
+                                    </c:otherwise>
+                                </c:choose>
+                            </c:forEach>
+                        </select>
+                    </div>
                     <br><br>
                     <div class="buttons">
                         <input type="submit" name="action" value="Edit" class="editButt">
