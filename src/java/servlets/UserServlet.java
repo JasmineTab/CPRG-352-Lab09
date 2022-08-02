@@ -3,6 +3,7 @@ package servlets;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;
@@ -28,10 +29,10 @@ public class UserServlet extends HttpServlet {
 
         try {
 
-            ArrayList<User> users = us.getAll();
+            List<User> users = us.getAll();
             request.setAttribute("users", users);
 
-            ArrayList<Role> roles = rs.getAll();
+            List<Role> roles = rs.getAll();
             request.setAttribute("roles", roles);
 
             if (action != null) {
@@ -45,7 +46,6 @@ public class UserServlet extends HttpServlet {
                     request.setAttribute("users", users);
 
                     response.sendRedirect("users");
-                    session.setAttribute("message", null);
                     return;
 
                 } else if (action.equals("edit")) {
@@ -81,12 +81,10 @@ public class UserServlet extends HttpServlet {
         String action = request.getParameter("action");
 
         request.setAttribute("action", action);
-        System.out.println(action + " line 84");
 
         try {
 
             if (action != null) {
-                System.out.print(action);
                 switch (action.toLowerCase()) {
                     case "add":
 
@@ -102,16 +100,12 @@ public class UserServlet extends HttpServlet {
                         String password = request.getParameter("passAdd");
                         Role role = rs.getRole(Integer.parseInt(request.getParameter("roleAdd")));
 
-                        System.out.println("here");
-                        
                         us.insert(email, active, fName, lName, password, role);
-
-                        System.out.println("no here");
 
                         break;
 
                     case "edit":
-                        
+
                         active = false;
 
                         if (request.getParameter("activeEdit") != null) {
