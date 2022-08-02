@@ -8,8 +8,8 @@ import java.util.List;
 import models.Role;
 
 public class RoleDB {
-    public List<Role> getAll() throws Exception {
-        List<Role> roles = new ArrayList<>();
+    public ArrayList<Role> getAll() throws Exception {
+        ArrayList<Role> roles = new ArrayList<>();
         ConnectionPool cp = ConnectionPool.getInstance();
         Connection con = cp.getConnection();
         PreparedStatement ps = null;
@@ -35,5 +35,34 @@ public class RoleDB {
         }
         
         return roles;
+    }
+    
+    public Role getRole(int id) throws Exception{
+        Role role = null;
+        ConnectionPool cp = ConnectionPool.getInstance();
+        Connection con = cp.getConnection();
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        
+        String sql = "SELECT * FROM role WHERE role_id=?";
+        
+        try{
+            ps = con.prepareStatement(sql);
+            ps.setInt(1, id);
+            rs = ps.executeQuery();
+            
+            rs.next();
+            
+            int rID = rs.getInt(1);
+            String rName = rs.getString(2);
+            
+            role = new Role(rID, rName);
+        }finally{
+            DBUtil.closeResultSet(rs);
+            DBUtil.closePreparedStatement(ps);
+            cp.freeConnection(con);
+        }
+        
+        return role;
     }
 }

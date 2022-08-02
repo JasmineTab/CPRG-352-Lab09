@@ -10,6 +10,8 @@ public class Role implements Serializable{
     private String rName;
 
     public Role() {
+        this.rID = -1;
+        this.rName = "";
     }
 
     public Role(int rID, String rName) {

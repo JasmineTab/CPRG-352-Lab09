@@ -11,19 +11,18 @@ public class User implements Serializable{
     private String fName;
     private String lName;
     private String password;
-    private int role;
+    private Role role;
 
     public User() {
     }
 
-    public User(String email, boolean active, String fName, String lName, String password, int role) {
+    public User(String email, boolean active, String fName, String lName, String password, Role role) {
         this.email = email;
         this.active = active;
         this.fName = fName;
         this.lName = lName;
         this.password = password;
-        this.role = role;
-    }
+        this.role = role;    }
 
     public String getEmail() {
         return email;
@@ -41,19 +40,19 @@ public class User implements Serializable{
         this.active = active;
     }
 
-    public String getFName() {
+    public String getfName() {
         return fName;
     }
 
-    public void setFName(String fName) {
+    public void setfName(String fName) {
         this.fName = fName;
     }
 
-    public String getLName() {
+    public String getlName() {
         return lName;
     }
 
-    public void setLName(String lName) {
+    public void setlName(String lName) {
         this.lName = lName;
     }
 
@@ -65,14 +64,13 @@ public class User implements Serializable{
         this.password = password;
     }
 
-    public int getRole() {
+    public Role getRole() {
         return role;
     }
 
-    public void setRole(int role) {
+    public void setRole(Role role) {
         this.role = role;
     }
-    
-    
+
     
 }
